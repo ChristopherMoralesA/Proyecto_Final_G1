@@ -1,0 +1,206 @@
+PRUEBAS DE FUNCIONAMIENTO
+
+RUN
+
+MODO MANUAL
+
+Se debe configurar MB0 de la siguiente forma:
+MB0
+7 6 5 4 3 2 1 0
+- 0 0 0 0 1 0 0
+
+En modo manual se puede modificar los actuadores con MB3 y MW6:
+MB3
+7 6 5 4 3 2 1 0
+- - X X X X X X
+
+MW6
+cualquier valor decimal de 0 a 65535
+
+Al apagar MB0.2 tanto las marcas como las salidas se apagan
+
+También se puede probar la EMERGENCIA con IB0.1
+El bit de estado de EMERGENCIA MB2.0 se enciende
+Se debe hacer un REBOOT del sistema con IB0.0
+
+----------------------------------------------------------------
+
+MODO AUTOMATICO
+
+Como estacion individual
+
+MB0
+7 6 5 4 3 2 1 0
+- 0 0 0 0 0 0 0
+
+Presionar y despresionar el botón de RUN_MODO_AUTOMATICO
+
+MB0
+7 6 5 4 3 2 1 0
+- 1 0 0 0 0 0 0
+
+Empieza a filtrar mientras el tanque sucio no este vacio y el tanque limpio no este lleno
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 0 1 0 1 0 0
+
+Termina el primer filtrado cuando el tanque sucio se vacia o cuando el limpio se llena
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 1 1 0 0 0 0
+
+Termina el segundo filtrado cuando el tanque sucio se llena o cuando el limpio se vacia
+
+ninguno vacio ni lleno
+IB0
+7 6 5 4 3 2 1 0
+0 0 0 1 0 1 0 0
+
+sucio lleno y limpio vacio
+IB0
+7 6 5 4 3 2 1 0
+0 0 0 0 1 1 0 0
+
+El proceso termina
+
+------------------------------------------------------------
+
+Como proceso con estacion posterior
+
+MB0
+7 6 5 4 3 2 1 0
+- 0 0 0 0 0 1 0
+
+Presionar y despresionar el botón de RUN_MODO_AUTOMATICO
+
+MB0
+7 6 5 4 3 2 1 0
+- 1 0 0 0 0 1 0
+
+Empieza a filtrar mientras el tanque sucio no este vacio y el tanque limpio no este lleno
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 0 1 0 1 0 0
+
+Termina el filtrado cuando el tanque sucio se vacia o cuando el limpio se  llena
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 1 1 0 0 0 0
+
+Ahora espera a que la estacion siguiente este lista
+
+IB4
+7 6 5 4 3 2 1 0
+- - - - - - 1 X
+
+luego empieza la transferencia de liquido a la estacion siguiente hasta que el tanque de agua limpia se vacia
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 0 1 0 0 0 0
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 0 0 0 0 0 0
+
+La estacion le da el pase a la siguiente y termina el proceso
+
+--------------------------------------------------------------
+
+Como proceso con estacion previa, pero sin estacion siguiente
+
+MB0
+7 6 5 4 3 2 1 0
+- 0 0 0 0 0 0 1
+
+Presionar y despresionar el botón de RUN_MODO_AUTOMATICO
+
+MB0
+7 6 5 4 3 2 1 0
+- 1 0 0 0 0 0 1
+
+La estacion espera a que la estacion previa le de el pase de funcionamiento
+
+IB4
+7 6 5 4 3 2 1 0
+- - - - - - 0 1
+
+Realiza el mismo proceso que cuando es estacion individual, por esta razon evitamos realizar el mismo proceso y simulamos una EMERGENCIA (presionar y desprecionar) o con los flotadores IB0.6 y IB0.7
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 X X X X 1 0
+
+hacemos REBOOT  (presionar y desprecionar)
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 0 0 0 0 0 1
+
+
+
+--------------------------------------------------------------
+
+Como proceso intermedio (con estacion previa y estacion posterior)
+
+MB0
+7 6 5 4 3 2 1 0
+- 0 0 0 0 0 1 1
+
+Presionar y despresionar el botón de RUN_MODO_AUTOMATICO
+
+MB0
+7 6 5 4 3 2 1 0
+- 1 0 0 0 0 1 1
+
+La estacion espera a que la estacion previa le de el pase de funcionamiento
+
+IB4
+7 6 5 4 3 2 1 0
+- - - - - - 0 1
+
+Realiza el mismo proceso que cuando es proceso con estacion posterior sin estacion previa, por esta razon evitamos realizar el mismo proceso y simulamos una EMERGENCIA (presionar y desprecionar) o con los flotadores IB0.6 y IB0.7
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 X X X X 1 0
+
+hacemos REBOOT  (presionar y desprecionar)
+
+IB0
+7 6 5 4 3 2 1 0
+0 0 0 0 0 0 0 1
+
+--------------------------------------------------------------
+
+Realizar enjuague del filtro
+
+poner M0.3 en 1, escoger mezcla en este caso mezcla B
+MB0
+7 6 5 4 3 2 1 0
+- 0 0 1 1 0 X X
+
+Presionar y despresionar el botón de RUN_MODO_AUTOMATICO
+
+MB0
+7 6 5 4 3 2 1 0
+- 1 0 1 1 0 X X
+
+La secuencia inicia,
+
+-primero 3s para modificar los actuadores de forma correcta
+-luego 10s de pre-enjuague a 500mbar
+-luego el enjuague según la mezcla
+
+
+
+
+
+
+
+
+

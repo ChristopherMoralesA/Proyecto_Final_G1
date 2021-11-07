@@ -1,0 +1,47 @@
+MB0 reservado para memorias modificables de configuración:
+	Configuración (xx) 			M0.1, M0.0
+	Modo AUTO-MANUAL   			M0.2
+	Enjuague SI/NO				M0.3
+	Mezcla de Enjuague (A,B o C)		M0.4, M0.5
+	RUN_MODO_AUTOMATICO			M0.6
+
+MB1 reservado para marcas de los actuadores e indicadores (pre-salida)
+	Marca Bomba 1				M1.0
+	Marca Bomba 2				M1.1
+	Marca Valvula de bola de 3 vias		M1.2, M1.3
+	Marca Valvula corredera 		M1.4
+	Marca Compuerta 			M1.5
+	RESET_Valvula_reguladora_de_presion	M1.6
+
+MB2 reservado para memorias no modificables directamente (almacenamiento):
+	Estado de EMERGENCIA 			M2.0
+	Estado de BUSY	     			M2.1
+	EN_MANUAL_Valvula reguladora de presion	M2.2
+	Etapa_enjuague_0			M2.3
+	Etapa_enjuague_1			M2.4
+	PASS_ESTACION_SIGUIENTE			M2.5
+
+
+
+MB3 reservado para memorias modificables de control manual:
+	C.Manual Bomba 1			M3.0
+	C.Manual Bomba 2			M3.1
+	C.Manual Valvula de bola de 3 vias	M3.2, M3.3
+	C.Manual Valvula corredera 		M3.4
+	C.Manual Compuerta 			M3.5	
+
+MW4 y MW5 marcas analógicas
+	Marca Valvula reguladora de presion	MW4, MW5
+
+MW6 y MW7 marcas analógicas
+	C.Manual Valvula reguladora de presion	MW6, MW7
+
+MD8, MD9, MD10 y MD11 reservado para tiempo de mezcla
+	tiempo de mezcla 			MD8, MD9, MD10 y MD11
+
+MB12 reservado para variables de memoria de comunicación con otras estaciones
+	COM_ACTIVAR_FILTRADO_PREV		MB12.0
+	COM_MEZCLA_BUSY				MB12.1
+	COM_ACTIVAR_MEZCLADO			MB12.2
+	COM_ESTADO_TANQUE_MEZCLA		MB12.3
+
