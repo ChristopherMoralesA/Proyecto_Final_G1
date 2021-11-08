@@ -4,6 +4,7 @@ MB0 reservado para memorias modificables de configuración:
 	Enjuague SI/NO				M0.3
 	Mezcla de Enjuague (A,B o C)		M0.4, M0.5
 	RUN_MODO_AUTOMATICO			M0.6
+	REBOOT					M0.7
 
 MB1 reservado para marcas de los actuadores e indicadores (pre-salida)
 	Marca Bomba 1				M1.0
