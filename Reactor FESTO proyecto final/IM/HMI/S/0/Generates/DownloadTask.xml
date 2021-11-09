@@ -2,10 +2,10 @@
 <DownloadTask>
   <ProjectInfo
     DeviceVersion="14.0.1.0"
-    CreationTime="2021-11-08 19:14:29 (UTC)"
+    CreationTime="2021-11-09 03:44:05 (UTC)"
     Runtime="SMART"
-    RtProjectName="Reactor FESTO.HMI_1[KTP700 Basic PN]"
-    RtProjectFolderName="Reactor FESTO.HMI_1[KTP700 Basic PN]"
+    RtProjectName="Reactor FESTO.HMI_Reactor[KTP700 Basic PN]"
+    RtProjectFolderName="Reactor FESTO.HMI_Reactor[KTP700 Basic PN]"
     DeviceType="KTP700_Basic"
     DisplayOrientation="0"
     RTReleaseNo="14.0.1.0"
