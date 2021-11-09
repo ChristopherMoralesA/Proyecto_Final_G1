@@ -464,4 +464,35 @@ IGuiPage
 		qm_FocusWidth: 2
 		qm_FocusColor: "#ff94b6e7"
 	}
+	IGuiQmlCircle
+	{
+		id: q671088662
+		objId: 671088662
+		x: 87
+		y: 167
+		width: 30
+		height: 30
+		qm_BorderWidth: 1
+		qm_TextColor: "#ff181c31"
+		qm_FillColor: "#ffdedbde"
+		qm_Radius : 15
+		qm_EllipseWidth: 30
+		qm_EllipseHeight: 30
+	}
+	IGuiTextField
+	{
+		id: q268435482
+		objId: 268435482
+		x: 63
+		y: 199
+		width: 75
+		height: 23
+		qm_Transparent : true 
+		qm_TextColor: "#ff31344a"
+		qm_ValueVarTextAlignmentVertical: Text.AlignVCenter
+		qm_Anchors.bottomMargin: 2
+		qm_Anchors.leftMargin: 3
+		qm_Anchors.rightMargin: 2
+		qm_Anchors.topMargin: 2
+	}
 }
