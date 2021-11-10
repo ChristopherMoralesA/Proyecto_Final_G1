@@ -1,0 +1,58 @@
+Condiciones iniciales para la prueba:
+
+=== Filtrado ===
+Para estación posterior
+MB0.1 = 1 los demás en cero
+
+MB0.6 Indica el inicio de la estación (RUN)
+
+IB0.2 = IB0.4 = 1 Sensores de nivel bajo
+
+Cuando comienza MB0.6 = 1 hace el filtrado y se enciende la bomba 1 Q0.0 se mantiene encendido hasta que se el tanque limpio I0.5 = 1 se llene o el sucio se vacíe I0.2 = 0 espera a que mezcla le indique que no está ocupado, M1.3 de la estación de mezcla.
+
+Q0.1 indica que la bomba 2 está activa y bombea hacia la siguiente estación (mezcla) termina cuando el tanque limpio se vacíe I0.4 = 0 I0.5 = 0 o el despósito principal se llene (mezclaI0.0 = 1.)
+
+=== Mezcla ===
+Condiciones iniciales de mezcla
+
+Todos los sensores de los depósitos en alto I0.1 = I0.2 = I0.3 = 1 y el depósito principal no debe estar lleno I0.4 = 0, para evitar que termine de un solo el proceso automático se recomienda poner I0.5 = 1
+
+Para el modo automático se debe verificar que M0.6 = 0 y M0.7 = 1
+Para indicar la receta se modifica MW2
+
+Receta A: MW2 = 0
+Receta B: MW2 = 1
+Receta C: MW2 = 2
+
+La memoria M1.1 es para iniciar de forma manual, se debe verificar que esté en 0 M1.1 = 0
+
+Cuando termina el proceso la salida Q0.1 = 1 indicando que bombea a la siguiente estación hasta que se vacía el principal I0.5 = 0 o se llena el del depósito de la siguiente estación (reactor I1.4 = 1)
+
+=== Reactor ===
+
+El sensor mínimo del tanque es I1.3
+M0.7 = 1 para indicar en modo automático
+Indicar la receta 
+
+Receta A: M1.0 = 1
+Receta B: M1.1 = 1
+Receta C: M1.2 = 1
+
+Tener cuidado con las memorias, solo una puede estar activa y las otras en bajo
+Con estas condiciones se puede enviar el bit de inicio
+
+Se va a activar Q0.6 para indicar que se está llenando, cuando I1.4 = 1 se realiza el proceso
+
+Cuando se llena inicia el proceso y activa Q0.1 indicando que se está vaciando, cuando el tanque de llenado está lleno o el tanque de reactor se vacía I1.3 = 0 le indica a llenado que comience el proceso.
+
+=== Llenado ===
+
+Para tener el modo continuo M0.4 = 1 se asume que se le dio marcha y que M1.7 = 1 permanece activo.
+
+Se debe elegir la receta
+
+Receta A: M1.3 = 1
+Receta B: M1.4 = 1
+
+Mientras una está activa las otras deben estar activas
+
